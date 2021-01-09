@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Reservaciones</h2>
+                    <ol>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li>Reservaciones</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs Section -->
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="services">
+            <div class="container" data-aos="fade-up">
+
+                {% if reservaciones_list %}
+
+                    <div class="row">
+                        <!-- =======  Columna de la tabla de reservaciones ======= -->
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Reservaciones</h4>
+                                    <p class="card-category"> Listado de reservaciones. </p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class=" text-primary">
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Fecha de la reservación
+                                            </th>
+                                            <th>
+                                                Local
+                                            </th>
+                                            <th>
+                                                Maquina
+                                            </th>
+                                            <th class="text-right">
+                                                Acciones
+                                            </th>
+
+                                            </thead>
+
+                                            <tbody>
+                                            {% for reservacion in reservaciones_list %}
+
+                                                <tr>
+
+                                                    <td>
+                                                        {{ reservacion.id }}
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        <a href="{{ reservacion.id }}">
+                                                            {{ reservacion.fecha }}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {{ reservacion.local }}
+                                                    </td>
+                                                    <td>
+                                                        {{ reservacion.maquina }}
+                                                    </td>
+                                                    <td class=" td-actions text-right">
+                                                        <a href="{{ reservacion.id }}/edit">
+                                                            <button type="button" rel="tooltip"
+                                                                    title="Editar reservacion"
+                                                                    class="btn  btn-link btn-lg">
+                                                                <i class="ion ion-edit"></i>
+                                                            </button>
+                                                        </a>
+                                                        <a href="{{ reservacion.id }}/delete">
+                                                            <button type="button" rel="tooltip" title="Eliminar"
+                                                                    class="btn text-danger btn-lg">
+                                                                <i class="ion ion-trash-a "></i>
+                                                            </button>
+
+
+                                                        </a>
+                                                    </td>
+
+
+                                                </tr>
+
+
+
+                                            {% endfor %}
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End  Columna de la tabla de reservaciones -->
+                        <!-- =======  Columna del filtro ======= -->
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Filtro</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="text-primary"> Por local </label>
+                                        <div>
+                                            <select class="select form-control" aria-label="Default select example"
+                                                    onchange="javascript:window.location = this.options[this.selectedIndex].value;">
+
+                                                <option selected="" value="?">Todo</option>
+
+                                                <option value="?tipo__exact=mp3">Audio</option>
+
+                                                <option value="?tipo__exact=doc">Documento</option>
+
+                                                <option value="?tipo__exact=img">Imagenes</option>
+
+                                                <option value="?tipo__exact=mov">Video</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-primary"> Por fecha </label>
+                                        <div>
+                                            <select class="select form-control"
+                                                    onchange="javascript:window.location = this.options[this.selectedIndex].value;">
+
+                                                <option selected="" value="?">Todo</option>
+
+                                                <option value="?tipo__exact=mp3">Audio</option>
+
+                                                <option value="?tipo__exact=doc">Documento</option>
+
+                                                <option value="?tipo__exact=img">Imagenes</option>
+
+                                                <option value="?tipo__exact=mov">Video</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End  Columna del filtro -->
+                    </div>
+
+                {% else %}
+                    <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
+                        <header class="section-header">
+                            <div class="box">
+                                <h3> Lo sentimos 😢</h3>
+                                <p>Usted no ha reservado aún, haga su priemra reservación en
+
+                                    <a href="{% url 'reservaciones:reservar' %}" class="text-primary">Reservar</a>
+
+                            </div>
+                        </header>
+                    </div>
+                {% endif %}
+            </div>
+        </section><!-- End Why Us Section -->
+
+
+    </main><!-- End #main -->
+
+{% endblock %}

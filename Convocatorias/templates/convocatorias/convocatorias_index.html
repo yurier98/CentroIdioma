@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Convocatorias</h2>
+                    <ol>
+                         <li><a href="{% url 'home' %}">Home</a></li>
+                        <li>Convocatorias</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="section-bg">
+            <div class="container">
+
+                {% if latest_convocatoria_list %}
+                    <div class="row">
+                        {% for convocatorias in latest_convocatoria_list %}
+
+                            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="box icon-box icon-box-blue">
+                                    <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #e9bf06;"></i>
+                                    </div>
+                                    <h4 class="title"><a
+                                            href="{{ convocatorias.id }}/detail">{{ convocatorias.title }}</a></h4>
+                                    <p>{{ convocatorias.fechaCreada|date }}</p>
+                                    <p class="description">Descripción:
+                                        {{ convocatorias.body |safe | truncatewords_html:10 | title  }} </p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
+                        <header class="section-header">
+                            <div class="box">
+                                <h3> Lo sentimos 😢</h3>
+                                <p>No tenemos convocatorias en estos momentos, pronto publicaremos
+                                    alguna 😉.</p>
+                            </div>
+                        </header>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+        <!-- End Services Section -->
+
+    </main><!-- End #main -->
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load static %}
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <div class="logo float-left">
+            <!-- Uncomment below if you prefer to use an text logo -->
+            <!-- <h1><a href="index.html">NewBiz</a></h1> -->
+            <a href="#intro"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+        </div>
+
+        <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="{% url "convocatorias:convocatoria_index" %}">Convocatorias</a></li>
+                <li><a href="{% url "materiales" %}">Materiales</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li class="drop-down"><a href="{% url "reservaciones:reservaciones" %}">Reservaciones</a>
+                    <ul>
+                        <li><a href="{% url "reservaciones:reservar" %}">Reservar</a></li>
+                        <li><a href="{% url "reservaciones:reservar" %}">Inscripciones</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- .main-nav -->
+        {% if user.is_authenticated %}
+            <div class="text-center">
+                <div class="" role="group">
+                    <a href="/" type="button" class=" active"><b>{{ user.username.capitalize }}</b>
+                        <a href="{% url 'logout' %}?next={{ request.path | urlencode }}"
+                           class="btn-login scrollto">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </a>
+                </div>
+            </div>
+        {% else %}
+            <div class="text-center">
+                <div class="btn-group btn-group-sm" role="group">
+                    <a href="{% url 'login' %}?next={{ request.path | urlencode }}" class="btn-login ">Iniciar Sesión
+                        <i class="fas fa-sign-in-alt"></i></a>
+
+                </div>
+            </div>
+        {% endif %}
+
+
+    </div>
+</header><!-- #header -->

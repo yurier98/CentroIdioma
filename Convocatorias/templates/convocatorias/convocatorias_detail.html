@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <ol>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'convocatorias:convocatoria_index' %}">Convocatoria</a></li>
+                        <li>Convocatoria Details</li>
+                    </ol>
+                    <h2>{{ convocatoria.title }}</h2>
+
+                </div>
+
+            </div>
+        </section><!-- Breadcrumbs Section -->
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section class="portfolio-details">
+            <div class="container">
+
+                <h1>{{ convocatoria.title }}</h1>
+                <div class="text-right">
+                    <button class="btn btn-primary">Inscribirse</button>
+
+
+                </div>
+                <p>
+                   Escrito por: {{ convocatoria.autor.email }}
+                </p>
+                <p>
+                    {{ convocatoria.fechaCreada| date }}
+                </p>
+
+
+                <div class="portfolio-description">
+                    <p>{{ convocatoria.body| safe }}</p>
+                </div>
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+{% endblock %}

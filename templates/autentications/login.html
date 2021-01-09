@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel=" stylesheet">
+    <link href="{% static 'assets/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/tabla.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: NewBiz - v2.1.0
+    * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+<body>
+
+
+{% block content %}
+
+    <!-- ======= Intro Section ======= -->
+    <section id="intro" class="clearfix">
+        <div class="container" data-aos="fade-up">
+
+
+            <div class="row  ">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">
+                                Iniciar sesión
+                            </h4>
+                        </div>
+                        <div class="card-body">
+
+                            <h6 class="card-category">
+                                {% if msg %}
+                                    <span class="text-danger">{{ msg }}</span>
+                                {% else %}
+                                    Use default credentials: test / ApS12_ZZs8
+
+                                {% endif %}
+                            </h6>
+
+                            <br/>
+
+                            <form role="form" method="post" action="">
+
+                                {% csrf_token %}
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Usuario</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br/>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Contraseña</label>
+                                            {{ form.password }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br/>
+
+
+                                <div class="text-center">
+                                    <button type="submit" name="login" class="btn btn-primary">Login</button>
+                                    |
+                                    <a href="/">Home</a>
+
+                                </div>
+                                &nbsp; &nbsp; <span class="pull-right">
+                                     No tiene una cuenta? <a href="{% url 'register' %}"
+                                                                class="text-primary">Créala</a>
+                                      </span>
+
+                                <div class="clearfix"></div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section><!-- End Intro Section -->
+
+
+
+{% endblock %}
+
+
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>

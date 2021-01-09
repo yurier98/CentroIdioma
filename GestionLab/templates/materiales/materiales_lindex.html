@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Materiales</h2>
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Materiales</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs Section -->
+
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="services">
+            <div class="container" data-aos="fade-up">
+
+                {% if materiales_list %}
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Materiales</h4>
+                                    <p class="card-category"> Aquí podras descargar materiales que te ayudarán avanzar
+                                        con
+                                        el aprendizaje de idiomas. </p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class=" text-primary">
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            <th>
+                                                Idioma
+                                            </th>
+                                            <th>
+                                                Tipo
+                                            </th>
+                                            <th>
+                                                Autor
+                                            </th>
+                                            <th>
+                                                Descripción
+                                            </th>
+                                            </thead>
+
+                                            <tbody>
+                                            {% for materiales in materiales_list %}
+
+                                                <tr>
+
+                                                    <td>
+                                                        {{ materiales.id }}
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        <a href="{{ materiales.url }}">
+                                                            {{ materiales.nombre }}
+                                                        </a>
+                                                    </td>
+
+                                                    <td>
+                                                        {{ materiales.idioma }}
+                                                    </td>
+                                                    <td>
+                                                        {{ materiales.tipo }}
+                                                    </td>
+                                                    <td>
+                                                        {{ materiales.autor }}
+                                                    </td>
+                                                    <td>
+                                                        {{ materiales.descripcion|title }}
+                                                    </td>
+
+                                                </tr>
+
+
+
+                                            {% endfor %}
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Filtro</h4>
+
+                                </div>
+                                <div class="card-body">
+                                    <div  class="form-group">
+                                        <label class="text-primary"> Por tipo </label>
+                                        <div>
+                                            <select class="select form-control" name="tipo" onchange="javascript:window.location = this.options[this.selectedIndex].value;">
+
+                                                <option selected="" value="?">Todo</option>
+
+                                                <option value="?tipo__exact=mp3">Audio</option>
+
+                                                <option value="?tipo__exact=doc">Documento</option>
+
+                                                <option value="?tipo__exact=img">Imagenes</option>
+
+                                                <option value="?tipo__exact=mov">Video</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% else %}
+                    <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
+                        <header class="section-header">
+                            <div class="box">
+                                <h3> Lo sentimos 😢</h3>
+                                <p>No tenemos convocatorias en estos momentos, pronto publicaremos
+                                    alguna 😉.</p>
+                            </div>
+                        </header>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </section><!-- End Why Us Section -->
+
+
+    </main><!-- End #main -->
+
+{% endblock %}

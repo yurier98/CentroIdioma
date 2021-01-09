@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Modificar reservación{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Reservación</h2>
+                    <ol>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'reservaciones:reservaciones' %}">Reservaciones</a></li>
+                        <li>Reservar</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs Section -->
+
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="services">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Modificar reservación</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <form method="POST" action="" class="mt-2" autocomplete="off">
+                                        {% csrf_token %}
+                                        <div style="margin: 6px ">
+                                            {{ field.errors }}
+                                            {{ field.help_text }}
+                                            {{ form | crispy }}
+                                        </div>
+
+
+                                        <div class="text-right">
+
+                                            <button type="submit" class="btn btn-success">Reservar</button>
+                                            <button type="reset" class="btn btn-danger">Limpiar</button>
+                                            <a href="{% url 'reservaciones:reservaciones' %}">
+                                            <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                                            </a>
+                                        </div>
+
+
+                                        <div class="clearfix"></div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Why Us Section -->
+
+
+    </main><!-- End #main -->
+
+{% endblock %}
