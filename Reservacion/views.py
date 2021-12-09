@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
 from django.urls import reverse
 
-from Reservacion.models import Reservacion
 from Reservacion.forms import ReservarForm
+from Reservacion.models import Reservacion
 
 
 @login_required
@@ -32,7 +31,7 @@ def reservar(request):
 @login_required
 def reservacion_detail(request, id):
     reservacion = get_object_or_404(Reservacion, pk=id)
-    return render(request, 'reservaciones/reservar.html', {'reservacion': reservacion})
+    return render(request, 'reservaciones/reservacion_detail.html', {'reservacion': reservacion})
 
 
 @login_required
@@ -47,7 +46,6 @@ def reservacion_edit(request, id):
     else:
         form = ReservarForm(instance=reservacion)
     return render(request, 'reservaciones/reservacion_edit.html', {'form': form})
-
 
 @login_required
 def reservacion_delete(request, id):

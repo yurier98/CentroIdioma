@@ -14,10 +14,8 @@
                     <ol>
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'convocatorias:convocatoria_index' %}">Convocatoria</a></li>
-                        <li>Convocatoria Details</li>
+                        <li>{{ convocatoria.title }}</li>
                     </ol>
-                    <h2>{{ convocatoria.title }}</h2>
-
                 </div>
 
             </div>
@@ -39,7 +37,6 @@
                 <p>
                     {{ convocatoria.fechaCreada| date }}
                 </p>
-
 
                 <div class="portfolio-description">
                     <p>{{ convocatoria.body| safe }}</p>

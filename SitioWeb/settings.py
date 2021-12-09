@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
@@ -45,11 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'tinymce',
-    'admin_interface',
-    'colorfield',
+    # 'admin_interface',
+    # 'colorfield',
     'crispy_forms',
-    "bootstrap4",
-    'bootstrap_datepicker_plus',
+    # "bootstrap4",
+    # 'bootstrap_datepicker_plus',
 
     # Mis aplicaciones
     'GestionLab',

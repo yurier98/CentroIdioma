@@ -1,19 +1,19 @@
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 
-from Reservacion.models import Reservacion
+from Convocatorias.models import Inscripcion
 
 
 # from bootstrap_datepicker_plus import DateTimePickerInput
 
 
-class ReservarForm(ModelForm):
+class InscripcionForm(ModelForm):
     class Meta:
-        model = Reservacion
-        fields = ['fecha', 'local', 'maquina']
+        model = Inscripcion
+        fields = ['fecha', 'convocatoria']
         help_texts = {
 
-            'fecha': _('Formato de la fecha dd/mm/yyyy'),
+            'fecha': _('Formato de la fecha dd/mm/yyyy 00:00'),
         }
         error_messages = {
             'fecha': {

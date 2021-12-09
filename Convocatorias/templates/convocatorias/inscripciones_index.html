@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block content %}
     <main id="main">
         <!-- ======= Breadcrumbs Section ======= -->
@@ -8,7 +9,7 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Reservaciones</h2>
+                    <h2>Inscripciones</h2>
                     <ol>
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li>Reservaciones</li>
@@ -22,66 +23,59 @@
         <section id="services">
             <div class="container" data-aos="fade-up">
 
-                {% if reservaciones_list %}
+                {% if inscripciones_list %}
                     <div class="row">
                         <!-- =======  Columna de la tabla de reservaciones ======= -->
                         <div class="col-md-9">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title ">Reservaciones</h4>
-                                    <p class="card-category"> Listado de reservaciones. </p>
+                                    <h4 class="card-title ">Inscripciones</h4>
+                                    <p class="card-category"> Listado de Inscripciones. </p>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table id="tablereservacions" class="table  table-hover">
+                                        <table id="tableinscripcion" class="table  table-hover">
                                             <thead class=" text-primary">
                                             <th>
                                                 ID
                                             </th>
                                             <th>
-                                                Fecha de la reservación
+                                                Convocatoria
                                             </th>
                                             <th>
-                                                Local
+                                                Fecha de la inscripción
                                             </th>
                                             <th>
-                                                Maquina
+                                                Lugar
                                             </th>
                                             <th class="text-right">
                                                 Acciones
                                             </th>
 
                                             </thead>
+
                                             <tbody>
-                                            {% for reservacion in reservaciones_list %}
+                                            {% for inscripcion in inscripciones_list %}
 
                                                 <tr>
-
                                                     <td>
-                                                        {{ reservacion.id }}
+                                                        {{ inscripcion.id }}
                                                     </td>
                                                     <td class="text-primary">
-                                                        <a href="{{ reservacion.id }}">
-                                                            {{ reservacion.fecha }}
+                                                        <a href="
+                                                                {% url "convocatorias:convocatoria_index" %}{{ inscripcion.convocatoria.id }}/detail/">
+                                                            {{ inscripcion.convocatoria }}
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        {{ reservacion.local }}
+                                                        {{ inscripcion.fecha }}
                                                     </td>
                                                     <td>
-                                                        {{ reservacion.maquina }}
+                                                        {{ inscripcion.lugar }}
                                                     </td>
                                                     <td class=" td-actions text-right">
-                                                        <a href="{{ reservacion.id }}/edit">
-                                                            <button type="button" rel="tooltip"
-                                                                    title="Editar reservacion"
-                                                                    class="btn  btn-link btn-lg">
-                                                                <i class="ion ion-edit"></i>
-                                                            </button>
-                                                        </a>
-                                                        <a href="{{ reservacion.id }}/delete">
-                                                            <button id="btnPromt" type="button" rel="tooltip"
-                                                                    title="Eliminar"
+                                                        <a href="{{ inscripcion.id }}/delete">
+                                                            <button type="button" rel="tooltip" title="Eliminar"
                                                                     class="btn text-danger btn-lg">
                                                                 <i class="ion ion-trash-a "></i>
                                                             </button>
@@ -146,15 +140,12 @@
                         </div>
                         <!-- End  Columna del filtro -->
                     </div>
-
                 {% else %}
                     <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
                         <header class="section-header">
                             <div class="box">
                                 <h3> Lo sentimos 😢</h3>
-                                <p>Usted no ha reservado aún, haga su priemra reservación en
-
-                                    <a href="{% url 'reservaciones:reservar' %}" class="text-primary">Reservar</a>
+                                <p>Usted no se ha inscrito a ninguna convocatoria aún.
 
                             </div>
                         </header>
@@ -165,14 +156,6 @@
 
 
     </main><!-- End #main -->
-    {#    <script>#}
-    {#        $(document).ready(function () {#}
-    {#            $('#tablereservacions').DataTable({#}
-    {#                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],#}
-    {#                "iDisplayLength": 3#}
-    {#            });#}
-    {#        });#}
-    {#    </script>#}
-{% endblock %}
 
+{% endblock %}
 

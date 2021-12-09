@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Convocatorias</h2>
                     <ol>
-                         <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
                         <li>Convocatorias</li>
                     </ol>
                 </div>
@@ -23,23 +23,27 @@
         <!-- ======= Services Section ======= -->
         <section id="services" class="section-bg">
             <div class="container">
-
                 {% if latest_convocatoria_list %}
                     <div class="row">
                         {% for convocatorias in latest_convocatoria_list %}
 
-                            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                                <div class="box icon-box icon-box-blue">
-                                    <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #e9bf06;"></i>
+                            <div class="row row-eq-height justify-content-center">
+
+                                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                                    <div class="box icon-box icon-box-blue">
+                                        <div class="icon">
+                                            <i class="ion-ios-bookmarks-outline"
+                                               style="color: #e9bf06;"></i>
+                                        </div>
+                                        <h4 class="title"><a
+                                                href="{{ convocatorias.id }}/detail">{{ convocatorias.title }}</a></h4>
+                                        <p>{{ convocatorias.fechaCreada|date:"d M Y" }}</p>
+                                        <p>Desde hace {{ convocatorias.fechaCreada| timesince }}</p>
+                                        <p class="description">Descripción:
+                                            {{ convocatorias.body |safe | truncatewords_html:10 | title }} </p>
                                     </div>
-                                    <h4 class="title"><a
-                                            href="{{ convocatorias.id }}/detail">{{ convocatorias.title }}</a></h4>
-                                    <p>{{ convocatorias.fechaCreada|date }}</p>
-                                    <p class="description">Descripción:
-                                        {{ convocatorias.body |safe | truncatewords_html:10 | title  }} </p>
                                 </div>
                             </div>
-
                         {% endfor %}
                     </div>
                 {% else %}

@@ -16,7 +16,7 @@ python manage.py migrate
 ```
 
 
-Para registarte como admin deberás crear una cuenta de superusurio
+Para registarte como admin deberás crear una cuenta de superusuario
 ```python
 python manage.py createsuperuser
 ```

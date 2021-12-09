@@ -1,10 +1,13 @@
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 
+from Convocatorias.forms import InscripcionForm
 # Create your views here.
-from Convocatorias.models import Convocatoria
+from Convocatorias.models import Convocatoria, Inscripcion
 
 
 class ConvocatoriaListView(ListView):
@@ -39,13 +42,48 @@ class IndexView(ConvocatoriaListView):
         return cache_key
 
 
-
 def index(request):
-  #  latest_convocatoria_list = Convocatoria.objects.order_by('-fechaCreada')[:5].filter(estado='P')
+    #  latest_convocatoria_list = Convocatoria.objects.order_by('-fechaCreada')[:5].filter(estado='P')
     latest_convocatoria_list = Convocatoria.objects.filter(estado='P')
     context = {'latest_convocatoria_list': latest_convocatoria_list}
     return render(request, 'convocatorias/convocatorias_index.html', context)
 
+
 def convocatoria_detail(request, id):
     convocatoria = get_object_or_404(Convocatoria, pk=id)
     return render(request, 'convocatorias/convocatorias_detail.html', {'convocatoria': convocatoria})
+
+
+def inscripciones(request):
+    #  latest_convocatoria_list = Convocatoria.objects.order_by('-fechaCreada')[:5].filter(estado='P')
+    inscripciones_list = Inscripcion.objects.all()
+    context = {'inscripciones_list': inscripciones_list}
+    return render(request, 'convocatorias/inscripciones_index.html', context)
+
+
+@login_required
+def inscripcion_edit(request, id):
+    inscripcion = get_object_or_404(Inscripcion, pk=id)
+    if request.method == 'POST':
+        form = InscripcionForm(request.POST, instance=inscripcion)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse('convocatorias:inscripciones_index'))
+    # return HttpResponseRedirect(Reservacion)
+    else:
+        form = InscripcionForm(instance=inscripcion)
+    return render(request, 'convocatorias/inscripcion_edit.html', {'form': form})
+
+
+@login_required
+def inscripcion_delete(request, id):
+    reservacion = get_object_or_404(Inscripcion, pk=id)
+    # if request.method == 'POST':
+    #     form = ReservarForm(request.POST, instance=reservacion)
+    #     if form.is_valid():
+    #         form.save()
+    #     return HttpResponseRedirect(reverse('reservaciones:reservaciones'))
+    # # return HttpResponseRedirect(Reservacion)
+    # else:
+    #     form = ReservarForm(instance=reservacion)
+    return render(request, 'convocatorias/inscripcion_delete.html', {'inscripcion': Inscripcion})

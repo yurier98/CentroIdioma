@@ -19,7 +19,6 @@
             </div>
         </section><!-- End Breadcrumbs Section -->
 
-
         <!-- ======= Why Us Section ======= -->
         <section id="services">
             <div class="container" data-aos="fade-up">
@@ -36,7 +35,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-hover">
+                                        <table id="tablemateriales" class="table table-hover">
                                             <thead class=" text-primary">
                                             <th>
                                                 ID
@@ -57,7 +56,6 @@
                                                 Descripción
                                             </th>
                                             </thead>
-
                                             <tbody>
                                             {% for materiales in materiales_list %}
 
@@ -87,18 +85,13 @@
 
                                                 </tr>
 
-
-
                                             {% endfor %}
                                             </tbody>
-
-
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header card-header-primary">
@@ -129,7 +122,6 @@
                         </div>
                     </div>
 
-
                 {% else %}
                     <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
                         <header class="section-header">
@@ -141,11 +133,8 @@
                         </header>
                     </div>
                 {% endif %}
-
-
             </div>
         </section><!-- End Why Us Section -->
-
 
     </main><!-- End #main -->
 

@@ -1,13 +1,11 @@
 import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
-
 # Create your models here.
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.timezone import now
-from django.contrib.auth.models import User
-
 from tinymce.models import HTMLField
 
 
@@ -42,7 +40,7 @@ class Convocatoria(models.Model):
 
 class Inscripcion(models.Model):
     fecha = models.DateTimeField('Fecha de la Inscripción', blank=False, null=False, default=now)
-    lugar = models.CharField("Lugar de la inscripcio", max_length=100)
+    lugar = models.CharField("Lugar de la Inscripción", max_length=100)
     disponibilidad = models.IntegerField(help_text='Cantidad de usuarios que se pueden inscribir')
     convocatoria = models.ForeignKey(Convocatoria, on_delete=models.CASCADE)
     estudiantes = models.ManyToManyField(User)
