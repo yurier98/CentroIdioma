@@ -1,17 +1,13 @@
-import datetime
-
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
-from django.urls import reverse
-
 from GestionLab.models import Laboratorio, Maquina
-from Convocatorias.models import Convocatoria
+
+# Create your models here.
 
 
-# def maqdelLab(lab):
-#     return Maquina.local(lab)
+'''esto es una prueba '''
+
 
 class Reservacion(models.Model):
     fecha = models.DateTimeField("Fecha de la reservación")
