@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # 'admin_interface',
     # 'colorfield',
     'crispy_forms',
+    # 'bootstrap_modal_forms',
     # "bootstrap4",
     # 'bootstrap_datepicker_plus',
 
@@ -146,10 +147,8 @@ PAGINATE_BY = 10
 # templates formularios bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# django-bootstrap-datepicker-plus
-BOOTSTRAP4 = {
-    'include_jquery': True,
-}
+# only if django version >= 3.0
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # LOGIN_REDIRECT_URL = "home"  # Route defined in app/urls.py
 # LOGOUT_REDIRECT_URL = "home"  # Route defined in app/urls.py

@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
 from Convocatorias.forms import InscripcionForm
@@ -12,12 +14,9 @@ from Convocatorias.models import Convocatoria, Inscripcion
 
 class ConvocatoriaListView(ListView):
     template_name = 'convocatorias/convocatorias_index.html'
-    context_object_name = 'convocatoria_list'
+    context_object_name = 'latest_convocatoria_list'
     page_type = ''
     paginate_by = settings.PAGINATE_BY
-
-
-
 
     @property
     def page_number(self):
@@ -87,3 +86,23 @@ def inscripcion_delete(request, id):
     # else:
     #     form = ReservarForm(instance=reservacion)
     return render(request, 'convocatorias/inscripcion_delete.html', {'inscripcion': Inscripcion})
+
+
+class ConvocatoriasView(LoginRequiredMixin, ListView):
+    """ Return all Convocatorias  ver lo del tema de la paginacion aki """
+    model = Convocatoria
+    queryset = Convocatoria.objects.filter(estado='P')
+    # ordering = ('-fecha',)
+    context_object_name = 'latest_convocatoria_list'
+    template_name = 'convocatorias/convocatorias_index.html'
+
+
+class ConvocatoriaDetailView(LoginRequiredMixin, DetailView):
+    """Return Convocatorias detail."""
+    # model = Convocatoria
+    # queryset = Convocatoria.objects.all()
+    context_object_name = 'convocatoria'
+    template_name = 'convocatorias/convocatorias_detail.html'
+
+    def get_object(self, queryset=None):
+        model = Convocatoria.objects.get(id_convocatoria=self.kwargs['id_convocatoria'])

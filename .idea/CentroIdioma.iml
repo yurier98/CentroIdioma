@@ -32,7 +32,10 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/venv/Lib/site-packages/flat/templates" />
+        <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/Reservacion/templates" />
+        <option value="$MODULE_DIR$/GestionLab/templates" />
+        <option value="$MODULE_DIR$/Convocatorias/templates" />
       </list>
     </option>
   </component>

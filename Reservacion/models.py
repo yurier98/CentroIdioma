@@ -1,42 +1,23 @@
+import uuid
+
 from django.contrib.auth.models import User
 from django.db import models
 
 from GestionLab.models import Laboratorio, Maquina
 
-# Create your models here.
-
-
-'''esto es una prueba '''
-
 
 class Reservacion(models.Model):
-    fecha = models.DateTimeField("Fecha de la reservación")
-    local = models.ForeignKey(Laboratorio, on_delete=models.CASCADE)
+    id_reservacion = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    fecha = models.DateField("Fecha", auto_now=False, auto_now_add=False)
+    hora = models.TimeField("Hora")
+    laboratorio = models.ForeignKey(Laboratorio, on_delete=models.CASCADE)
     maquina = models.ForeignKey(Maquina, on_delete=models.CASCADE)
     usuario = models.ManyToManyField(User)
 
+    def __str__(self) -> str:
+        return str(self.fecha)
+
     class Meta:
-        ordering = ["id"]
-
-    # def __str__(self):
-    #     return self.fecha.strptime('%dd/%mm/%Y')
-    # ARREGLAR ESTE FORMATO
-   # @property
-    # def __str__(self):
-    # fecha_str = "14/07/2014"
-    # date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
-    #  return self.fecha.strptime(date_object, '%dd/%mm/%Y')
-    # return self.fecha.strptime('%dd/%mm/%YYYY')
-    # return self.fecha.__str__()
-
-    #  def get_absolute_url(self):
-
-    """
-    Devuelve el URL a una instancia particular de Book
-    """
-#   return reverse('reservacion-detail', args=[str(self.id)])
-
-# def save(self, force_insert=False, force_update=False, using=None,
-#          update_fields=None):
-#
-#     return
+        ordering = ["fecha"]
+        verbose_name = "Reservación"
+        verbose_name_plural = "Reservaciones"

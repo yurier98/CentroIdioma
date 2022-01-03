@@ -17,13 +17,16 @@
     <!-- Google Fonts -->
     {#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700"#}
     {#          rel="stylesheet">#}
-    <link href="{% static 'assets/css/googlecss.css' %}?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700 "
-          rel="stylesheet">
+    {#    <link href="{% static 'assets/css/googlecss.css' %}?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700 "#}
+    {#          rel="stylesheet">#}
 
     <!-- Vendor CSS Files -->
     <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel=" stylesheet">
     <link href="{% static 'assets/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+
     <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
@@ -34,6 +37,7 @@
 
 
     <!--  CSS Datatable -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static '../static/DataTables/datatables.min.css' %}" rel="stylesheet">
     <link href="{% static '../static/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css' %}"
           rel="stylesheet">
@@ -49,11 +53,11 @@
 
 {% include 'header.html' %}
 
-<div class="">
-    <!-- Contenido de la pagina -->
-    {% block content %}
-    {% endblock %}
-</div>
+
+<!-- Contenido de la pagina -->
+{% block content %}
+{% endblock %}
+
 
 {% include 'footer.html' %}
 
@@ -71,56 +75,56 @@
 <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
 <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
 <script src="{% static '../static/bootstrap/js/bootstrap.min.js' %}"></script>
+
+{#<script src="{% static 'assets/js/bootstrap.js' %}"></script>#}
+{#<script src="{% static 'assets/js/jquery.js' %}"></script>#}
+
 <!-- DataTable  JS File -->
-<script src="{% static '../static/DataTables/DataTables-1.10.23/js/dataTables.bootstrap4.min.js' %}"></script>
+{#<script src="{% static '../static/DataTables/DataTables-1.10.23/js/dataTables.bootstrap4.min.js' %}"></script>#}
 <script src="{% static '../static/DataTables/DataTables-1.10.23/js/jquery.dataTables.min.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'DataTables/dataTables.min.css' %}">
+<script src="{% static 'DataTables/dataTables.min.js' %}"></script>
 
 <!-- Template Main JS File -->
 <script src="{% static 'assets/js/main.js' %}"></script>
-{#<script>#}
-{#    $(document).ready(function () {#}
-{#        $('#tablereservacions').DataTable();#}
-{#    });#}
-{#</script>#}
 
 
+{##}
+{#<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>#}
+{#<!-- You can alternatively load the minified version -->#}
+{#<script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>#}
+
+<!-- Mostar Ventana  -->
 <script>
-    $('#btnPromt').click(function () {
-            swal({
-                title: "Seguro que quieres hacer esto?",
-                text: "Esta acción ya no se podrá deshacer, Así que piénsalo bien.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, estoy seguro',
-                cancelButtonText: "Cancelar"
-            });
+    function abrir_modal(url) {
+        $('#popup').load(url, function () {
+            $(this).modal('show');
         });
-    $(document).ready(function () {
-        $('#tablereservacions').DataTable({
-            "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "Todos"]],
-            "iDisplayLength": 3
-        });
-    });
-    $(document).ready(function () {
-        $('#tablemateriales').DataTable({
-            "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
-            "iDisplayLength": 3
-        });
-    });
+        return false;
+    }
 
-    $("#fecha").datetimepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        startDate: '28/01/2017',
-        datesDisabled: ['20/02/2017'],
-        startView: 2,
-        minView: 2,
-        language: 'es'
-    }).find('input').addClass("form-control");
+    function cerrar_modal() {
+        $('#popup').modal('hide');
+        return false;
+    }
+
+
+
+
+
 
 </script>
+
+<script>
+$(document).ready( function () {
+    $('#tablereservacions').DataTable();
+} );
+
+
+
+</script>
+
 
 </body>
 </html>

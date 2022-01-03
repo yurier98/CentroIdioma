@@ -5,7 +5,8 @@ from .models import Reservacion
 
 
 class ReservacionesAdmin(admin.ModelAdmin):
-    list_display = ('fecha','local','maquina')
-    list_filter = ['local','fecha']
+    list_display = ('fecha', 'laboratorio', 'maquina')
+    list_filter = ['laboratorio', 'fecha']
 
-admin.site.register(Reservacion,ReservacionesAdmin)
+
+admin.site.register(Reservacion, ReservacionesAdmin)

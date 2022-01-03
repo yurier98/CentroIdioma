@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
     <main id="main">
         <!-- ======= Breadcrumbs Section ======= -->
         <section class="breadcrumbs">
@@ -10,7 +11,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Reservaciones</h2>
                     <ol>
-                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'home' %}">Inicio</a></li>
                         <li>Reservaciones</li>
                     </ol>
                 </div>
@@ -21,6 +22,15 @@
         <!-- ======= Why Us Section ======= -->
         <section id="services">
             <div class="container" data-aos="fade-up">
+
+                {% if messages %}
+                    <ul class="messages list-group mb-3">
+                        {% for message in messages %}
+                            <li{% if message.tags %}
+                                class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 
                 {% if reservaciones_list %}
                     <div class="row">
@@ -33,16 +43,30 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
+                                        <div class="text-right">
+                                            <a class="btn btn-primary" href="{% url 'reservaciones:reservar' %}">
+                                                Reservar
+
+                                            </a>
+
+                                            {#                                        <button class="btn btn-primary"><a#}
+                                            {#                                                onclick="return abrir_modal('{% url "reservaciones:reservar" %}')"#}
+                                            {#                                                role="button">Reservar </a>#}
+                                            {#                                        </button>#}
+                                        </div>
                                         <table id="tablereservacions" class="table  table-hover">
                                             <thead class=" text-primary">
                                             <th>
                                                 ID
                                             </th>
                                             <th>
-                                                Fecha de la reservación
+                                                Fecha
                                             </th>
                                             <th>
-                                                Local
+                                                Hora
+                                            </th>
+                                            <th>
+                                                Laboratorio
                                             </th>
                                             <th>
                                                 Maquina
@@ -57,7 +81,7 @@
 
                                                 <tr>
 
-                                                    <td>
+                                                    <td>{{ reservacion }}
                                                         {{ reservacion.id }}
                                                     </td>
                                                     <td class="text-primary">
@@ -65,8 +89,12 @@
                                                             {{ reservacion.fecha }}
                                                         </a>
                                                     </td>
+
                                                     <td>
-                                                        {{ reservacion.local }}
+                                                        {{ reservacion.hora }}
+                                                    </td>
+                                                    <td>
+                                                        {{ reservacion.laboratorio }}
                                                     </td>
                                                     <td>
                                                         {{ reservacion.maquina }}
@@ -165,14 +193,104 @@
 
 
     </main><!-- End #main -->
-    {#    <script>#}
-    {#        $(document).ready(function () {#}
-    {#            $('#tablereservacions').DataTable({#}
-    {#                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],#}
-    {#                "iDisplayLength": 3#}
-    {#            });#}
-    {#        });#}
-    {#    </script>#}
+
+    <div id="popup" class="modal fade" role="dialog"></div>
+
 {% endblock %}
 
 
+{% block js %}
+
+    <script type="text/javascript">
+$(document).ready(function() {
+
+    $("#create-book").modalForm({
+        formURL: "{% url 'reservar' %}"
+    });
+
+});
+
+
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#tablereservacions').DataTable({
+                dom: 'Blfrtip',
+                buttons: [{
+                    //Botón para Excel
+                    extend: 'excel',
+                    footer: true,
+                    title: 'Listado de reservaciones',
+                    filename: 'Listado_de_reservaciones',
+                    //Aquí es donde generas el botón personalizado
+                    text: '<button class="btn btn-success">Excel <i class="far fa-file-excel-o"></i></button>'
+                },
+                    //Botón para PDF
+                    {
+                        extend: 'pdf',
+                        footer: true,
+                        title: 'Listado de reservaciones',
+                        filename: 'Listado de reservaciones',
+                        text: '<button class="btn btn-danger">PDF<i class="material-icons">picture_as_pdf</i> <i class="far fa-file-pdf "></i></button>'
+                    }
+                ],
+                {#buttons: [#}
+                {#    'csv', 'excel', 'pdf', 'print'#}
+                {#],#}
+                scrollY: "600px",
+                scrollX: false,
+                scrollCollapse: true,
+                responsive: true,
+                "aLengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "Todos"]],
+                "iDisplayLength": 5,
+                "language": espanol,
+                "autoWidth": true,
+                columnDefs: [
+                    {"width": "50px", "targets": 0},
+                    {"width": "100px", "targets": 1},
+                    {"width": "250px", "targets": 2},
+                    {"width": "100px", "targets": 3},
+                    {"width": "100px", "targets": 4},
+                    {"width": "100px", "targets": 5},
+                ],
+
+            })
+            ;
+        });
+        let espanol = {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }
+        };
+
+
+
+    </script>
+
+{% endblock js %}

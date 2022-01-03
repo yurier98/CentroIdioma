@@ -1,14 +1,11 @@
 import logging
 
 from django.contrib import auth
-from django.contrib.auth import logout, REDIRECT_FIELD_NAME
-from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render
-
 # Create your views here.
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout, REDIRECT_FIELD_NAME
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
-
 # Pagina de inicio
 from django.utils.decorators import method_decorator
 from django.utils.http import is_safe_url
@@ -19,7 +16,7 @@ from django.views.generic import RedirectView, FormView
 
 from Convocatorias.models import Convocatoria
 from GestionLab.forms import LoginForm, SignUpForm
-from GestionLab.models import Materiales
+from GestionLab.models import Material
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +28,7 @@ def homepage(request):
 
 
 def materiales(request):
-    materiales_list = Materiales.objects.all()
+    materiales_list = Material.objects.all()
     context = {'materiales_list': materiales_list}
     return render(request, "materiales/materiales_lindex.html", context)
 

@@ -1,24 +1,24 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Laboratorio, Maquina, Materiales
+from .models import Laboratorio, Maquina, Material
 
 
-class LaboratoriosAdmin(admin.ModelAdmin):
+class LaboratorioAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'ubicacion', 'cant_pc', 'disponibilidad')
     list_filter = ['ubicacion', 'disponibilidad']
 
 
-class MaquinasAdmin(admin.ModelAdmin):
+class MaquinaAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'local', 'num_inv', 'estado')
     list_filter = ['local', 'estado']
 
 
-class MaterialesAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'idioma' ,'tipo', 'autor', 'url')
+class MaterialAdmin(admin.ModelAdmin):
+    list_display = ('id_material', 'nombre', 'idioma', 'tipo', 'autor', 'url')
     list_filter = ['tipo']
 
 
-admin.site.register(Laboratorio, LaboratoriosAdmin)
-admin.site.register(Maquina, MaquinasAdmin)
-admin.site.register(Materiales, MaterialesAdmin)
+admin.site.register(Laboratorio, LaboratorioAdmin)
+admin.site.register(Maquina, MaquinaAdmin)
+admin.site.register(Material, MaterialAdmin)
