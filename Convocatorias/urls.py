@@ -10,7 +10,9 @@ urlpatterns = [
     # path('', views.index, name='convocatorias'),
 
     path('', views.ConvocatoriasView.as_view(), name='convocatorias'),
-    path('detail/<uuid:id_convocatoria>/', views.ConvocatoriaDetailView.as_view(), name='convocatoria_detail'),
+    path('detail/<int:pk>/', views.DetailConvocatoria, name='convocatoria_detail'),
+    # path('detail/<int:pk>/', views.ConvocatoriaDetailView.as_view(), name='convocatoria_detail'),
+    # path('detail/<uuid:id_convocatoria>/', views.ConvocatoriaDetailView.as_view(), name='convocatoria_detail'),
     # path('detail/(?P<id_convocatoria>[\w\d-]+)/$', views.ConvocatoriaDetailView.as_view(), name='convocatoria_detail'),
 
     path('inscripciones/', views.inscripciones, name='inscripciones_index'),

@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -48,11 +47,6 @@ def index(request):
     return render(request, 'convocatorias/convocatorias_index.html', context)
 
 
-def convocatoria_detail(request, id):
-    convocatoria = get_object_or_404(Convocatoria, pk=id)
-    return render(request, 'convocatorias/convocatorias_detail.html', {'convocatoria': convocatoria})
-
-
 def inscripciones(request):
     #  latest_convocatoria_list = Convocatoria.objects.order_by('-fechaCreada')[:5].filter(estado='P')
     inscripciones_list = Inscripcion.objects.all()
@@ -88,7 +82,7 @@ def inscripcion_delete(request, id):
     return render(request, 'convocatorias/inscripcion_delete.html', {'inscripcion': Inscripcion})
 
 
-class ConvocatoriasView(LoginRequiredMixin, ListView):
+class ConvocatoriasView(ListView):
     """ Return all Convocatorias  ver lo del tema de la paginacion aki """
     model = Convocatoria
     queryset = Convocatoria.objects.filter(estado='P')
@@ -97,12 +91,21 @@ class ConvocatoriasView(LoginRequiredMixin, ListView):
     template_name = 'convocatorias/convocatorias_index.html'
 
 
-class ConvocatoriaDetailView(LoginRequiredMixin, DetailView):
+def DetailConvocatoria(request, pk):
+    convocatoria = get_object_or_404(Convocatoria, pk=pk)
+    # obtengo las ultimas 5 convocatorias publicadas
+    latest_convocatoria_list = Convocatoria.objects.filter(estado='P')[0:5]
+
+    context = {'latest_convocatoria_list': latest_convocatoria_list, 'objeto': convocatoria}
+    return render(request, 'convocatorias/convocatorias_detail.html', context)
+
+
+class ConvocatoriaDetailView(DetailView):
     """Return Convocatorias detail."""
-    # model = Convocatoria
+    model = Convocatoria
     # queryset = Convocatoria.objects.all()
     context_object_name = 'convocatoria'
     template_name = 'convocatorias/convocatorias_detail.html'
 
-    def get_object(self, queryset=None):
-        model = Convocatoria.objects.get(id_convocatoria=self.kwargs['id_convocatoria'])
+    # def get_object(self, queryset=None):
+    #     model = Convocatoria.objects.get(id_convocatoria=self.kwargs['id_convocatoria'])

@@ -16,7 +16,8 @@ class Convocatoria(models.Model):
         ('P', 'Publicado'),
         ('D', 'Eliminado'),
     )
-    id_convocatoria = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # id_convocatoria = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id_convocatoria = models.AutoField(primary_key=True)
     titulo = models.CharField("Título", max_length=100)
     img = ImageField(upload_to='static\media', default='null')
     autor = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -34,7 +35,7 @@ class Convocatoria(models.Model):
         Devuelve la url para acceder a una instancia particular de MyModelName.
         verificar si da error es q tengo q dirijirlo a detail
         """
-        return reverse('convocatorias:convocatoria_detail', args=[str(self.id)])
+        return reverse('convocatorias:convocatoria_detail', args=[str(self.id_convocatoria)])
 
     def __str__(self) -> str:
         return str(self.titulo)

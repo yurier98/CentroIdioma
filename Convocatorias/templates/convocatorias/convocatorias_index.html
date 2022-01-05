@@ -39,7 +39,7 @@
                                     </div>
 
                                     <h2 class="entry-title">
-                                        <a href="detail/{{ convocatorias.id_convocatoria }}">{{ convocatorias.titulo }}</a>
+                                        <a href="{{ convocatorias.get_absolute_url }}">{{ convocatorias.titulo }}</a>
                                     </h2>
 
                                     <div class="entry-meta">
@@ -63,12 +63,22 @@
                                             {{ convocatorias.body |safe | truncatewords_html:50 | title }}
                                         </p>
                                         <div class="read-more">
-                                            <a href="{{ convocatorias.id_convocatoria }}/detail">Leer más</a>
+                                            <a href="{{ convocatorias.get_absolute_url }}">Leer más</a>
                                         </div>
                                     </div>
 
                                 </article><!-- End blog entry -->
                             {% endfor %}
+
+
+                            <div class="blog-pagination">
+                                <ul class="justify-content-center">
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                </ul>
+                            </div>
+
                         {% else %}
                             <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
                                 <header class="section-header">
@@ -80,15 +90,6 @@
                                 </header>
                             </div>
                         {% endif %}
-
-
-                        <div class="blog-pagination">
-                            <ul class="justify-content-center">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                            </ul>
-                        </div>
 
                     </div><!-- End blog entries list -->
 
