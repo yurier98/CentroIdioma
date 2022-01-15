@@ -11,8 +11,8 @@ Ejecutar:
 --
 and make migrations
 ```python
-python manage.py makemigrations
-python manage.py migrate
+    python manage.py makemigrations
+    python manage.py migrate
 ```
 
 Para registarte como admin deberás crear una cuenta de superusuario
