@@ -44,8 +44,9 @@
                                     {# aki deberia comprobar cuando el campo debe ser oculto #}
                                     <input type="hidden" name="usuario" value="{{ usuario.pk }}"/>
 
-
-                                    {{ form.as_p }}
+                                    {{ field.errors }}
+                                    {{ field.help_text }}
+                                    {{ form.as_table }}
 
                                 </div>
 

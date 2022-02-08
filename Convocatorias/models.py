@@ -19,14 +19,14 @@ class Convocatoria(models.Model):
     # id_convocatoria = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     id_convocatoria = models.AutoField(primary_key=True)
     titulo = models.CharField("Título", max_length=100)
-    img = ImageField(upload_to='static\media', default='null')
+    img = ImageField(upload_to='medias', default='null')
     autor = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     fechaCreada = models.DateTimeField('Fecha de creada', blank=False, null=False, auto_now_add=True)
     body = HTMLField("Contenido", null=True)
     estado = models.CharField("Estado", max_length=1, choices=ESTADO, default='B')
 
     class Meta:
-        # ordering = ["id"]
+        ordering = ["-fechaCreada"]
         verbose_name = "Convocatoria"
         verbose_name_plural = "Convocatorias"
 

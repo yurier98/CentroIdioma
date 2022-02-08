@@ -87,8 +87,20 @@ class ConvocatoriasView(ListView):
     model = Convocatoria
     queryset = Convocatoria.objects.filter(estado='P')
     # ordering = ('-fecha',)
-    context_object_name = 'latest_convocatoria_list'
+    paginate_by = 2 # El número de objetos que se mostrarán por página, en este caso queremos que se muestren 3 Convocatorias por página.
+    context_object_name = 'convocatoria_list'
     template_name = 'convocatorias/convocatorias_index.html'
+
+    # def get_queryset(self):
+    #     queryset = Convocatoria.objects.filter(estado='P')[0:2]
+    #     return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(ConvocatoriasView, self).get_context_data(**kwargs)
+        context['latest_convocatoria_list'] = Convocatoria.objects.filter(estado='P')[0:5]
+        return context
+
+
 
 
 def DetailConvocatoria(request, pk):

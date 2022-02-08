@@ -1973,6 +1973,7 @@ section {
 .blog .blog-pagination li {
     margin: 0 5px;
     transition: 0.3s;
+    border-radius: 4px;
 }
 
 .blog .blog-pagination li a {
@@ -1981,10 +1982,12 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .blog .blog-pagination li.active, .blog .blog-pagination li:hover {
     background: #007bff;
+
 }
 
 .blog .blog-pagination li.active a, .blog .blog-pagination li:hover a {

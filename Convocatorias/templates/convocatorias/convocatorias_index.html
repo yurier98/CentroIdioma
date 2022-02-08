@@ -29,8 +29,8 @@
 
                     <div class="col-lg-8 entries">
 
-                        {% if latest_convocatoria_list %}
-                            {% for convocatorias in latest_convocatoria_list %}
+                        {% if convocatoria_list %}
+                            {% for convocatorias in convocatoria_list %}
                                 <article class="entry">
 
                                     <div class="entry-img">
@@ -73,11 +73,56 @@
 
                             <div class="blog-pagination">
                                 <ul class="justify-content-center">
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
+                                    {##}
+                                    {#                                    {% if page_obj.has_previous %}#}
+                                    {#                                        <li class=""><a href="?page={{ page_obj.previous_page_number }}"><i#}
+                                    {#                                                class="bi bi-arrow-left"></i></a></li>#}
+                                    {#                                    {% endif %}#}
+                                    {#                                    <li class="active"><a href="#">{{ page_obj.number }}</a></li>#}
+                                    {#                                    {% if page_obj.has_next %}#}
+                                    {#                                        <li class="active"><a href="?page={{ page_obj.next_page_number }}"><i#}
+                                    {#                                                class="bi bi-arrow-right"></i></a></li>#}
+                                    {#                                    {% endif %}#}
+
+                                </ul>
+
+                                <ul class="justify-content-center">
+
+                                    {% if page_obj.has_previous %}
+                                        <li class=""><a
+                                                href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                                        </li>
+
+                                    {% endif %}
+
+                                    <li class="active"><a href="#">{{ page_obj.number }}</a></li>
+
+                                    {% if page_obj.has_next %}
+                                        <li class=""><a
+                                                href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+
+                                <ul class="justify-content-center">
+
+                                    {#                                    {% if page_obj.has_previous %}#}
+                                    {#                                        <li>#}
+                                    {#                                            <a href="?page={{ page_obj.previous_page_number }}"><i#}
+                                    {#                                                    class="bi bi-arrow-left"></i></a>#}
+                                    {#                                        </li>#}
+                                    {#                                    {% endif %}#}
+                                    {#                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}#}
+                                    {#                                    {% if page_obj.has_next %}#}
+                                    {#                                          <li>#}
+                                    {#                                            <a href="?page={{  page_obj.next_page_number }}"><i#}
+                                    {#                                                    class="bi bi-arrow-right"></i></a>#}
+                                    {#                                        </li>#}
+                                    {#                                    {% endif %}#}
                                 </ul>
                             </div>
+
 
                         {% else %}
                             <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
@@ -91,7 +136,9 @@
                             </div>
                         {% endif %}
 
-                    </div><!-- End blog entries list -->
+                    </div>
+
+                    <!-- End blog entries list -->
 
                     <div class="col-lg-4">
 
@@ -113,7 +160,7 @@
                                         <div class="post-item clearfix">
                                             <img src="{% url 'home' %}media/{{ convocatorias.img }}" alt="">
                                             <h4>
-                                                <a href="{{ convocatorias.id_convocatoria }}/detail">{{ convocatorias.titulo }}</a>
+                                                <a href="{{ convocatorias.get_absolute_url }}">{{ convocatorias.titulo }}</a>
                                             </h4>
                                             <time datetime="2020-01-01">{{ convocatorias.fechaCreada|date:"d M Y" }}</time>
                                         </div>
@@ -139,7 +186,8 @@
                                 </ul>
                             </div><!-- End sidebar tags-->
 
-                        </div><!-- End sidebar -->
+                        </div>
+                        <!-- End sidebar -->
 
                     </div><!-- End blog sidebar -->
 

@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <ol>
                         <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'convocatorias:convocatorias' %}">Convocatoria</a></li>
+                        <li><a href="{% url 'convocatorias:convocatorias' %}">Convocatorias</a></li>
                         <li>{{ objeto.titulo }}</li>
                     </ol>
                 </div>
@@ -36,7 +36,7 @@
                             </div>
 
                             <h2 class="entry-title">
-                                <a href="blog-single.html">{{ objeto.titulo }}</a>
+                                {{ objeto.titulo }}
                             </h2>
 
                             <div class="entry-meta">
@@ -118,7 +118,7 @@
                                         <div class="post-item clearfix">
                                             <img src="{% url 'home' %}media/{{ convocatorias.img }}" alt="">
                                             <h4>
-                                                <a href="{{ convocatorias.id_convocatoria }}/detail">{{ convocatorias.titulo }}</a>
+                                                <a href="{{ convocatorias.get_absolute_url }}">{{ convocatorias.titulo }}</a>
                                             </h4>
                                             <time datetime="2020-01-01">{{ convocatorias.fechaCreada|date:"d M Y" }}</time>
                                         </div>

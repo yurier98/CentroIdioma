@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
+# from jet_django.urls import jet_urls
 
 from GestionLab import views
 
@@ -43,6 +44,7 @@ urlpatterns = [
     path('materiales/', views.materiales, name='materiales'),
     path('convocatorias/', include('Convocatorias.urls', namespace='convocatorias')),
     path('reservaciones/', include('Reservacion.urls', namespace='reservaciones')),
+    # path('jet_api/', include('jet_django.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
