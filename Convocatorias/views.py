@@ -87,7 +87,7 @@ class ConvocatoriasView(ListView):
     model = Convocatoria
     queryset = Convocatoria.objects.filter(estado='P')
     # ordering = ('-fecha',)
-    paginate_by = 2 # El número de objetos que se mostrarán por página, en este caso queremos que se muestren 3 Convocatorias por página.
+    paginate_by = 5 # El número de objetos que se mostrarán por página, en este caso queremos que se muestren 3 Convocatorias por página.
     context_object_name = 'convocatoria_list'
     template_name = 'convocatorias/convocatorias_index.html'
 

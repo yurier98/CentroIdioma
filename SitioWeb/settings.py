@@ -145,7 +145,7 @@ SITE_ID = 1
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # paginate
-PAGINATE_BY = 3
+PAGINATE_BY = 5
 
 # templates formularios bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
