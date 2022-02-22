@@ -12,7 +12,7 @@ class Reservacion(models.Model):
     hora = models.TimeField("Hora")
     laboratorio = models.ForeignKey(Laboratorio, on_delete=models.CASCADE)
     maquina = models.ForeignKey(Maquina, on_delete=models.CASCADE)
-    usuario = models.ManyToManyField(User)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return str(self.fecha)

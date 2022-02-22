@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
+
 
 {% block content %}
+    {% include "_modal.html" %}
 
     <main id="main">
         <!-- ======= Breadcrumbs Section ======= -->
@@ -23,14 +24,6 @@
         <section id="services">
             <div class="container" data-aos="fade-up">
 
-                {% if messages %}
-                    <ul class="messages list-group mb-3">
-                        {% for message in messages %}
-                            <li{% if message.tags %}
-                                class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
 
                 {% if reservaciones_list %}
                     <div class="row">
@@ -38,21 +31,25 @@
                         <div class="col-md-9">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title ">Reservaciones</h4>
-                                    <p class="card-category"> Listado de reservaciones. </p>
+                                    <div class="float-left">
+                                        <h4 class="card-title ">Reservaciones</h4>
+                                    </div>
+                                    <div class="nav-tabs-navigation float-right">
+                                        <button class="create-book btn btn-outline-light" type="button">
+                                            <span class="fa fa-plus mr-2"></span>Reservar
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <div class="text-right">
-                                            <a class="btn btn-primary" href="{% url 'reservaciones:reservar' %}">
-                                                Reservar
+                                            <div class="col-12 mb-3">
+                                            </div>
+                                            {#                                            <a class="btn btn-primary" href="{% url 'reservaciones:reservar' %}">#}
+                                            {#                                                Reservar#}
+                                            {#                                            </a>#}
 
-                                            </a>
 
-                                            {#                                        <button class="btn btn-primary"><a#}
-                                            {#                                                onclick="return abrir_modal('{% url "reservaciones:reservar" %}')"#}
-                                            {#                                                role="button">Reservar </a>#}
-                                            {#                                        </button>#}
                                         </div>
                                         <table id="tablereservacions" class="table  table-hover">
                                             <thead class=" text-primary">
@@ -85,7 +82,8 @@
                                                         {{ reservacion.id }}
                                                     </td>
                                                     <td class="text-primary">
-                                                        <a href="{{ reservacion.id }}">
+                                                        <a class="read-book "
+                                                           href="{% url 'reservaciones:detail' reservacion.pk %}">
                                                             {{ reservacion.fecha }}
                                                         </a>
                                                     </td>
@@ -100,20 +98,15 @@
                                                         {{ reservacion.maquina }}
                                                     </td>
                                                     <td class=" td-actions text-right">
-                                                        <a href="{{ reservacion.id }}/edit">
-                                                            <button type="button" rel="tooltip"
-                                                                    title="Editar reservacion"
-                                                                    class="btn  btn-link btn-lg">
-                                                                <i class="ion ion-edit"></i>
-                                                            </button>
-                                                        </a>
-                                                        <a href="{{ reservacion.id }}/delete">
-                                                            <button id="btnPromt" type="button" rel="tooltip"
-                                                                    title="Eliminar"
-                                                                    class="btn text-danger btn-lg">
-                                                                <i class="ion ion-trash-a "></i>
-                                                            </button>
-                                                        </a>
+                                                        <button type="button" class="update-book btn btn-lg  btn-link"
+                                                                data-id="{% url 'reservaciones:update' reservacion.pk %}">
+                                                            <span class="ion ion-edit"></span>
+                                                        </button>
+                                                        <button type="button"
+                                                                class="delete-reservacion btn btn-lg text-danger"
+                                                                data-id="{% url 'reservaciones:delete' reservacion.id_reservacion %}">
+                                                            <span class="fa fa-trash "></span>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
@@ -126,6 +119,18 @@
                         <!-- End  Columna de la tabla de reservaciones -->
                         <!-- =======  Columna del filtro ======= -->
                         <div class="col-md-3">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div style="border-radius:10px;" {% if message.tags %}
+                                         class="alert alert-icon alert-{{ message.tags }} alert-dismissible fade show mb-0"
+                                         role="alert" {% endif %}>
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title ">Filtro</h4>
@@ -194,103 +199,41 @@
 
     </main><!-- End #main -->
 
-    <div id="popup" class="modal fade" role="dialog"></div>
-
-{% endblock %}
+{% endblock content %}
 
 
-{% block js %}
-
+{% block extrascripts %}
     <script type="text/javascript">
-$(document).ready(function() {
+    $(function () {
 
-    $("#create-book").modalForm({
-        formURL: "{% url 'reservar' %}"
+        // Create book button
+        $(".create-book").modalForm({ formURL: "{% url 'reservaciones:reservar' %}" });
+
+        // Update book buttons
+        $(".update-book").each(function () {
+            $(this).modalForm({ formURL: $(this).data('id') });
+        });
+
+        // Read book buttons
+        $(".read-book").each(function () {
+            $(this).modalForm({ formURL: $(this).data('id') });
+        });
+
+        // Delete reservacion buttons
+        $(".delete-reservacion").each(function () {
+            $(this).modalForm({ formURL: $(this).data('id') });
+        })
+
+        // Hide message
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(500);
+        });
+
     });
 
-});
 
 
 
 
     </script>
-
-    <script>
-        $(document).ready(function () {
-            $('#tablereservacions').DataTable({
-                dom: 'Blfrtip',
-                buttons: [{
-                    //Botón para Excel
-                    extend: 'excel',
-                    footer: true,
-                    title: 'Listado de reservaciones',
-                    filename: 'Listado_de_reservaciones',
-                    //Aquí es donde generas el botón personalizado
-                    text: '<button class="btn btn-success">Excel <i class="far fa-file-excel-o"></i></button>'
-                },
-                    //Botón para PDF
-                    {
-                        extend: 'pdf',
-                        footer: true,
-                        title: 'Listado de reservaciones',
-                        filename: 'Listado de reservaciones',
-                        text: '<button class="btn btn-danger">PDF<i class="material-icons">picture_as_pdf</i> <i class="far fa-file-pdf "></i></button>'
-                    }
-                ],
-                {#buttons: [#}
-                {#    'csv', 'excel', 'pdf', 'print'#}
-                {#],#}
-                scrollY: "600px",
-                scrollX: false,
-                scrollCollapse: true,
-                responsive: true,
-                "aLengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "Todos"]],
-                "iDisplayLength": 5,
-                "language": espanol,
-                "autoWidth": true,
-                columnDefs: [
-                    {"width": "50px", "targets": 0},
-                    {"width": "100px", "targets": 1},
-                    {"width": "250px", "targets": 2},
-                    {"width": "100px", "targets": 3},
-                    {"width": "100px", "targets": 4},
-                    {"width": "100px", "targets": 5},
-                ],
-
-            })
-            ;
-        });
-        let espanol = {
-            "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
-            "sZeroRecords": "No se encontraron resultados",
-            "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sSearch": "Buscar:",
-            "sUrl": "",
-            "sInfoThousands": ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            },
-            "buttons": {
-                "copy": "Copiar",
-                "colvis": "Visibilidad"
-            }
-        };
-
-
-
-    </script>
-
-{% endblock js %}
+{% endblock extrascripts %}

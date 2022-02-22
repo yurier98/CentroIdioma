@@ -1,7 +1,4 @@
-{#{% extends "trabajadores/trabajador_index.html" %}#}
-
 {% extends "base.html" %}
-{#{% load static %}#}
 
 
 {% block content %}
@@ -21,6 +18,7 @@
 
             </div>
         </section><!-- End Breadcrumbs Section -->
+
         <!-- ======= Why Us Section ======= -->
         <section id="contact">
             <div class="container " data-aos="fade-up">
@@ -32,10 +30,10 @@
                             <h4 class="card-title ">Reservar</h4>
                         </div>
 
-                        <div class="form">
-                            <form class="form-center php-email-form" method="POST">
+                        <div class="">
+                            <form id="contact-form" class="form-center php-email-form contact-form mx-lg-auto"
+                                  method="POST">
                                 {% csrf_token %}
-
                                 {% if form.errors %}
                                     <p class="alert alert-danger">{{ form.errors }}</p>
                                 {% endif %}
@@ -46,16 +44,32 @@
 
                                     {{ field.errors }}
                                     {{ field.help_text }}
-                                    {{ form.as_table }}
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-6">
+                                            {{ form.fecha }}
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            {{ form.hora }}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-6">
+                                            {{ form.laboratorio }}
+
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            {{ form.maquina }}
+                                        </div>
+                                    </div>
 
                                 </div>
 
                                 <div class="modal-footer card-footer">
                                     <div class="col-lg-12 text-right">
                                         <input type="submit" class="btn btn-primary" value="Guardar">
-                                        <button type="reset" class="btn btn-outline-primary">Limpiar</button>
+                                        <!-- <button type="reset" class="btn btn-outline-primary">Limpiar</button>
                                         <a class="btn btn-danger"
-                                           href="{% url 'reservaciones:reservaciones' %}">Cancelar</a>
+                                            href="{% url 'reservaciones:reservaciones' %}">Cancelar</a> -->
                                     </div>
                                 </div>
                                 <br>
@@ -70,5 +84,3 @@
         </section><!-- End Why Us Section -->
     </main><!-- End #main -->
 {% endblock %}
-
-

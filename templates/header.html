@@ -22,10 +22,6 @@
 
                 <li class="{% if request.resolver_match.url_name == 'reservaciones' %} active{% endif %}">
                     <a href="{% url "reservaciones:reservaciones" %}">Reservaciones</a>
-                    {#                    <ul>#}
-                    {#                        <li><a onclick="return abrir_modal('{% url "reservaciones:reservar" %}')"#}
-                    {#                               role="button">Reservar </a></li>#}
-                    {#                    </ul>#}
                 </li>
 
                 <li class="drop-down"><a href="{% url "reservaciones:reservaciones" %}">Reservaciones</a>

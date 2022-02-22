@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'tinymce',
+    'bootstrap_modal_forms',
+    'widget_tweaks',
 
     # 'admin_interface',
     # 'colorfield',
-    'crispy_forms',
+    # 'crispy_forms',
     # 'bootstrap_modal_forms',
     # "bootstrap4",
     # 'bootstrap_datepicker_plus',
@@ -294,7 +296,8 @@ JAZZMIN_SETTINGS = {
 }
 
 JAZZMIN_UI_TWEAKS = {
-
     "theme": "flatly",
     "dark_mode_theme": "cyborg",
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

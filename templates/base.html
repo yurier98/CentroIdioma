@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -9,16 +8,10 @@
     <title>Centro de Idiomas</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
-
+    {% block stylesheets %}
     <!-- Favicons -->
     <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
     <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    {#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700"#}
-    {#          rel="stylesheet">#}
-    {#    <link href="{% static 'assets/css/googlecss.css' %}?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700 "#}
-    {#          rel="stylesheet">#}
 
     <!-- Vendor CSS Files -->
     <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -31,17 +24,17 @@
     <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/css/tabla.css' %}" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/css/tabla.css' %}" rel="stylesheet">
 
 
-    <!--  CSS Datatable -->
-    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static '../static/DataTables/datatables.min.css' %}" rel="stylesheet">
-    <link href="{% static '../static/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css' %}"
-          rel="stylesheet">
-
+        <!--  CSS Datatable -->
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static '../static/DataTables/datatables.min.css' %}" rel="stylesheet">
+        <link href="{% static '../static/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css' %}"
+              rel="stylesheet">
+    {% endblock stylesheets %}
     <!-- =======================================================
     * Template Name: NewBiz - v2.1.0
     * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
@@ -49,6 +42,7 @@
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
 </head>
+
 <body>
 
 {% include 'header.html' %}
@@ -63,6 +57,7 @@
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+
 <!-- Vendor JS Files -->
 <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -75,56 +70,24 @@
 <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
 <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
 <script src="{% static '../static/bootstrap/js/bootstrap.min.js' %}"></script>
-
-{#<script src="{% static 'assets/js/bootstrap.js' %}"></script>#}
-{#<script src="{% static 'assets/js/jquery.js' %}"></script>#}
-
 <!-- DataTable  JS File -->
-{#<script src="{% static '../static/DataTables/DataTables-1.10.23/js/dataTables.bootstrap4.min.js' %}"></script>#}
 <script src="{% static '../static/DataTables/DataTables-1.10.23/js/jquery.dataTables.min.js' %}"></script>
-
 <link rel="stylesheet" href="{% static 'DataTables/dataTables.min.css' %}">
 <script src="{% static 'DataTables/dataTables.min.js' %}"></script>
-
 <!-- Template Main JS File -->
 <script src="{% static 'assets/js/main.js' %}"></script>
 
 
-{##}
-{#<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>#}
-{#<!-- You can alternatively load the minified version -->#}
-{#<script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>#}
+<!-- JavaScript -->
+{% block scripts %}
+    {#      <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>#}
+    {#      <script src="{% static 'js/popper.min.js' %}"></script>#}
+    {#      <script src="{% static 'js/bootstrap.min.js' %}"></script>#}
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+{% endblock scripts %}
 
-<!-- Mostar Ventana  -->
-<script>
-    function abrir_modal(url) {
-        $('#popup').load(url, function () {
-            $(this).modal('show');
-        });
-        return false;
-    }
-
-    function cerrar_modal() {
-        $('#popup').modal('hide');
-        return false;
-    }
-
-
-
-
-
-
-</script>
-
-<script>
-$(document).ready( function () {
-    $('#tablereservacions').DataTable();
-} );
-
-
-
-</script>
-
-
+{% block extrascripts %}
+{% endblock extrascripts %}
 </body>
+
 </html>

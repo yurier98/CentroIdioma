@@ -167,10 +167,7 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Desktop Navigation */
-.main-nav {
-    /* Drop Down */
-    /* Deep Drop Down */
-}
+
 
 .main-nav, .main-nav * {
     margin: 0;
@@ -1333,7 +1330,7 @@ section {
     animation: animate-loading 1s linear infinite;
 }
 
-#contact .php-email-form input, #contact .php-email-form textarea, #contact .php-email-form select {
+#contact .php-email-form input, #contact .php-email-form textarea {
     border-radius: 0;
     box-shadow: none;
     font-size: 14px;
@@ -1352,9 +1349,9 @@ section {
     padding: 12px 15px;
 }
 
-#contact .php-email-form select {
+/* #contact .php-email-form select {
     padding: 20px 15px;
-}
+} */
 
 /*#contact .php-email-form input[type="select"] {*/
 /*    padding: 12px 15px;*/

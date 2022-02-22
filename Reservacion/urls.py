@@ -8,10 +8,12 @@ urlpatterns = [
     # path(r'',views.IndexView.as_view(),
     #     name='convocatorias_index'),
     # path('', views.index, name='reservaciones'),
+    # path('', views.ReservacionesView.as_view(), name='reservaciones'),
     path('', views.ReservacionesView.as_view(), name='reservaciones'),
     path('new/', views.ReservacionCreate.as_view(), name='reservar'),
+    # path('new/', views.Create, name='reservar'),
 
-    path('<int:id>/', views.reservacion_detail, name='detail'),
-    path('<int:id>/edit/', views.reservacion_edit, name='edit'),
-    path('<int:id>/delete/', views.reservacion_delete, name='delete'),
+    path('detail/<uuid:pk>', views.DetailReservacion.as_view(), name='detail'),
+    path('edit/<uuid:pk>', views.ReservacionUpdate.as_view(), name='update'),
+    path('delete/<uuid:pk>', views.ReservacionDelete.as_view(), name='delete'),
 ]
