@@ -8,9 +8,9 @@ from .models import Convocatoria, Inscripcion
 
 
 class ConvocatoriasAdmin(admin.ModelAdmin):
-    list_display = ( 'title', 'estado', 'fechaCreada', 'fue_publicado_reciente')
+    list_display = ('titulo', 'estado', 'fechaCreada', 'fue_publicado_reciente')
     list_filter = ['fechaCreada', 'autor']
-    search_fields = ['title']
+    search_fields = ['titulo']
 
 
 class InscripcionAdmin(admin.ModelAdmin):

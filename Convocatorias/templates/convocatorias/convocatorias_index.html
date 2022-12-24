@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Convocatorias</h2>
                     <ol>
-                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'home' %}">Inicio</a></li>
                         <li>Convocatorias</li>
                     </ol>
                 </div>
@@ -20,46 +20,182 @@
             </div>
         </section><!-- End Breadcrumbs Section -->
 
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="section-bg">
-            <div class="container">
-                {% if latest_convocatoria_list %}
-                    <div class="row">
-                        {% for convocatorias in latest_convocatoria_list %}
 
-                            <div class="row row-eq-height justify-content-center">
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
 
-                                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                                    <div class="box icon-box icon-box-blue">
-                                        <div class="icon">
-                                            <i class="ion-ios-bookmarks-outline"
-                                               style="color: #e9bf06;"></i>
-                                        </div>
-                                        <h4 class="title"><a
-                                                href="{{ convocatorias.id }}/detail">{{ convocatorias.title }}</a></h4>
-                                        <p>{{ convocatorias.fechaCreada|date:"d M Y" }}</p>
-                                        <p>Desde hace {{ convocatorias.fechaCreada| timesince }}</p>
-                                        <p class="description">Descripción:
-                                            {{ convocatorias.body |safe | truncatewords_html:10 | title }} </p>
+                <div class="row">
+
+                    <div class="col-lg-8 entries">
+
+                        {% if convocatoria_list %}
+                            {% for convocatorias in convocatoria_list %}
+                                <article class="entry">
+
+                                    <div class="entry-img">
+                                        <img src="{% url 'home' %}media/{{ convocatorias.img }}" alt=""
+                                             class="img-fluid">
                                     </div>
-                                </div>
+
+                                    <h2 class="entry-title">
+                                        <a href="{{ convocatorias.get_absolute_url }}">{{ convocatorias.titulo }}</a>
+                                    </h2>
+
+                                    <div class="entry-meta">
+                                        <ul>
+                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                                    href="blog-single.html">John Doe {{ convocatorias.autor }}</a></li>
+                                            <li class="d-flex align-items-center"><i class="bi bi-calendar2-event"></i>
+                                                <a
+                                                        href="blog-single.html">
+                                                    <time datetime="2020-01-01">{{ convocatorias.fechaCreada|date:"d M Y" }}</time>
+                                                </a></li>
+                                            <li class="d-flex align-items-center"><i class="bi bi-clock-history "></i>
+                                                <a
+                                                        href="blog-single.html">Desde
+                                                    hace {{ convocatorias.fechaCreada| timesince }}</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="entry-content">
+                                        <p>
+                                            {{ convocatorias.body |safe | truncatewords_html:50 | title }}
+                                        </p>
+                                        <div class="read-more">
+                                            <a href="{{ convocatorias.get_absolute_url }}">Leer más</a>
+                                        </div>
+                                    </div>
+
+                                </article><!-- End blog entry -->
+                            {% endfor %}
+
+
+                            <div class="blog-pagination">
+                                <ul class="justify-content-center">
+                                    {##}
+                                    {#                                    {% if page_obj.has_previous %}#}
+                                    {#                                        <li class=""><a href="?page={{ page_obj.previous_page_number }}"><i#}
+                                    {#                                                class="bi bi-arrow-left"></i></a></li>#}
+                                    {#                                    {% endif %}#}
+                                    {#                                    <li class="active"><a href="#">{{ page_obj.number }}</a></li>#}
+                                    {#                                    {% if page_obj.has_next %}#}
+                                    {#                                        <li class="active"><a href="?page={{ page_obj.next_page_number }}"><i#}
+                                    {#                                                class="bi bi-arrow-right"></i></a></li>#}
+                                    {#                                    {% endif %}#}
+
+                                </ul>
+
+                                <ul class="justify-content-center">
+
+                                    {% if page_obj.has_previous %}
+                                        <li class=""><a
+                                                href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                                        </li>
+
+                                    {% endif %}
+
+                                    <li class="active"><a href="#">{{ page_obj.number }}</a></li>
+
+                                    {% if page_obj.has_next %}
+                                        <li class=""><a
+                                                href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+
+                                <ul class="justify-content-center">
+
+                                    {#                                    {% if page_obj.has_previous %}#}
+                                    {#                                        <li>#}
+                                    {#                                            <a href="?page={{ page_obj.previous_page_number }}"><i#}
+                                    {#                                                    class="bi bi-arrow-left"></i></a>#}
+                                    {#                                        </li>#}
+                                    {#                                    {% endif %}#}
+                                    {#                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}#}
+                                    {#                                    {% if page_obj.has_next %}#}
+                                    {#                                          <li>#}
+                                    {#                                            <a href="?page={{  page_obj.next_page_number }}"><i#}
+                                    {#                                                    class="bi bi-arrow-right"></i></a>#}
+                                    {#                                        </li>#}
+                                    {#                                    {% endif %}#}
+                                </ul>
                             </div>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
-                        <header class="section-header">
-                            <div class="box">
-                                <h3> Lo sentimos 😢</h3>
-                                <p>No tenemos convocatorias en estos momentos, pronto publicaremos
-                                    alguna 😉.</p>
+
+
+                        {% else %}
+                            <div class="col-md-6 col-lg-12" data-aos="zoom-in" data-aos-delay="200">
+                                <header class="section-header">
+                                    <div class="box">
+                                        <h3> Lo sentimos 😢</h3>
+                                        <p>No tenemos convocatorias en estos momentos, pronto publicaremos
+                                            alguna 😉.</p>
+                                    </div>
+                                </header>
                             </div>
-                        </header>
+                        {% endif %}
+
                     </div>
-                {% endif %}
+
+                    <!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+
+                        <div class="sidebar">
+
+                            <h3 class="sidebar-title">Buscar</h3>
+                            <div class="sidebar-item search-form">
+                                <form action="">
+                                    <input type="text">
+                                    <button type="submit"><i class="bi bi-search"></i></button>
+                                </form>
+                            </div><!-- End sidebar search formn-->
+
+                            <h3 class="sidebar-title">Convocatorias Recientes</h3>
+
+                            <div class="sidebar-item recent-posts">
+                                {% if latest_convocatoria_list %}
+                                    {% for convocatorias in latest_convocatoria_list %}
+                                        <div class="post-item clearfix">
+                                            <img src="{% url 'home' %}media/{{ convocatorias.img }}" alt="">
+                                            <h4>
+                                                <a href="{{ convocatorias.get_absolute_url }}">{{ convocatorias.titulo }}</a>
+                                            </h4>
+                                            <time datetime="2020-01-01">{{ convocatorias.fechaCreada|date:"d M Y" }}</time>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div><!-- End sidebar recent posts-->
+
+
+                            <h3 class="sidebar-title">Tags</h3>
+                            <div class="sidebar-item tags">
+                                <ul>
+                                    <li><a href="#">App</a></li>
+                                    <li><a href="#">IT</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Mac</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Office</a></li>
+                                    <li><a href="#">Creative</a></li>
+                                    <li><a href="#">Studio</a></li>
+                                    <li><a href="#">Smart</a></li>
+                                    <li><a href="#">Tips</a></li>
+                                    <li><a href="#">Marketing</a></li>
+                                </ul>
+                            </div><!-- End sidebar tags-->
+
+                        </div>
+                        <!-- End sidebar -->
+
+                    </div><!-- End blog sidebar -->
+
+                </div>
+
             </div>
-        </section>
-        <!-- End Services Section -->
+        </section><!-- End Blog Section -->
+
 
     </main><!-- End #main -->
 

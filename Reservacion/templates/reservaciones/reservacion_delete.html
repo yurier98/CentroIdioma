@@ -30,14 +30,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Usted va a eliminar esta reservación:_________</h4>
+                                <h4 class="card-title ">Usted va a eliminar esta
+                                    reservación: {{ reservacion.fecha }} </h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <form method="POST" action="" class="mt-2" autocomplete="off">
                                         {% csrf_token %}
                                         <div style="margin: 6px ">
-                                         <p>Esta seguro que desea eliminar la reservación</p>
+                                            <p>Esta seguro que desea eliminar la reservación</p>
                                         </div>
 
 

@@ -11,18 +11,30 @@
 
         <nav class="main-nav float-right d-none d-lg-block">
             <ul>
-                <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="{% url "convocatorias:convocatoria_index" %}">Convocatorias</a></li>
-                <li><a href="{% url "materiales" %}">Materiales</a></li>
+                <li class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">
+                    <a href="{% url 'home' %}">Inicio</a></li>
+
+                <li class="{% if request.resolver_match.url_name == 'convocatorias' %} active{% endif %}">
+                    <a href="{% url 'convocatorias:convocatorias' %}">Convocatorias</a></li>
+
+                <li class="{% if request.resolver_match.url_name == 'materiales' %} active{% endif %}">
+                    <a href="{% url 'materiales' %}">Materiales</a></li>
+
+                <li class="{% if request.resolver_match.url_name == 'reservaciones' %} active{% endif %}">
+                    <a href="{% url "reservaciones:reservaciones" %}">Reservaciones</a>
+                </li>
 
                 <li class="drop-down"><a href="{% url "reservaciones:reservaciones" %}">Reservaciones</a>
                     <ul>
                         <li><a href="{% url "reservaciones:reservar" %}">Reservar</a></li>
+
                         <li><a href="{% url "convocatorias:inscripciones_index" %}">Inscripciones</a></li>
                     </ul>
                 </li>
+                <li class="">
+                    <a href="{% url 'home' %}#about">Acerca de nosotros</a></li>
+
+                {#                <li><a href="{% url 'home' %}#about">Acerca de nosotros</a></li>#}
 
                 <li>
                     {% if user.is_authenticated %}
@@ -30,7 +42,8 @@
                             <a href="/" type="button" class=" active"><b>{{ user.username.capitalize }}</b></a>
                             <ul>
                                 {% if user.is_superuser %}
-                                    <li><a class="icon" href="/admin"> <i class="ion-android-settings"></i> Administrar
+                                    <li><a class="icon" href="/admin" target="_blank"> <i
+                                            class="ion-android-settings"></i> Administrar
                                         sitio</a></li>
                                 {% endif %}
                                 <li><a class="icon" href="/"> <i class="ion-android-person"></i> Perfil</a></li>

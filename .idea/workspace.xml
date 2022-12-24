@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="aad0704f-041f-4224-9864-da7c31e164a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/create_reservacion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/delete_reservacion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/detail_reservacion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/update_reservacion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SitioWeb/ldapUCI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/mixins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/medias/1636731122666_D9FjLii.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery-3.2.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery.bootstrap.modal.forms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery.bootstrap.modal.forms.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CentroIdioma.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CentroIdioma.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionLab/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GestionLab/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionLab/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GestionLab/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/migrations/0002_auto_20211225_1708.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/migrations/0003_auto_20211228_1545.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/templates/reservaciones/reservacion_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/reservacion_delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/templates/reservaciones/reservaciones_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/reservaciones_create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/templates/reservaciones/reservaciones_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/templates/reservaciones/reservaciones_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservacion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reservacion/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SitioWeb/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SitioWeb/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/clients/client-8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/app1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/app2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/app3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/card1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/card2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/card3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/portfolio-details-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/portfolio-details-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/portfolio-details-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/web1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/web2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/portfolio/web3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/team-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/team-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/team-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/team-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/testimonial-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/testimonial-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/testimonial-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/testimonial-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/img/testimonial-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/autentications/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autentications/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/autentications/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/autentications/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="yurier &lt;yurierjesus@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1t2XzD5qxPQC18637Ocg4ehS3B9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yurier\Documents\GitHub\CentroIdioma\static" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CentroIdioma" type="Python.DjangoServer" factoryName="Django server">
+      <module name="CentroIdioma" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Yurier\Documents\GitHub\CentroIdioma\.venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.1" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aad0704f-041f-4224-9864-da7c31e164a1" name="Default Changelist" comment="" />
+      <created>1621968418027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621968418027</updated>
+      <workItem from="1621968419574" duration="44000" />
+      <workItem from="1621968471129" duration="107000" />
+      <workItem from="1622035375846" duration="3562000" />
+      <workItem from="1637767169212" duration="274000" />
+      <workItem from="1637791079963" duration="145000" />
+      <workItem from="1637978618117" duration="96000" />
+      <workItem from="1637979355620" duration="497000" />
+      <workItem from="1637979885513" duration="616000" />
+      <workItem from="1637980528160" duration="97000" />
+      <workItem from="1637980659971" duration="533000" />
+      <workItem from="1637981546120" duration="9000" />
+      <workItem from="1638459840243" duration="1231000" />
+      <workItem from="1638824303056" duration="616000" />
+      <workItem from="1638998582184" duration="383000" />
+      <workItem from="1639073640877" duration="3083000" />
+      <workItem from="1639158195123" duration="612000" />
+      <workItem from="1639193960527" duration="13000" />
+      <workItem from="1639277491951" duration="1423000" />
+      <workItem from="1639284938805" duration="258000" />
+      <workItem from="1639444095319" duration="650000" />
+      <workItem from="1639448429346" duration="4049000" />
+      <workItem from="1639512065201" duration="1087000" />
+      <workItem from="1639515058800" duration="5430000" />
+      <workItem from="1640465155874" duration="107000" />
+      <workItem from="1640466359620" duration="13000" />
+      <workItem from="1640470709122" duration="4835000" />
+      <workItem from="1640554186777" duration="76000" />
+      <workItem from="1640568344650" duration="4780000" />
+      <workItem from="1640576924343" duration="172000" />
+      <workItem from="1640701813767" duration="118000" />
+      <workItem from="1640702227523" duration="365000" />
+      <workItem from="1640702681596" duration="49000" />
+      <workItem from="1640702988087" duration="11448000" />
+      <workItem from="1640740030079" duration="4504000" />
+      <workItem from="1641151239476" duration="12234000" />
+      <workItem from="1641170285610" duration="5154000" />
+      <workItem from="1641247528308" duration="8738000" />
+      <workItem from="1641354767042" duration="10000" />
+      <workItem from="1641354791216" duration="638000" />
+      <workItem from="1641399792297" duration="2639000" />
+      <workItem from="1641421496214" duration="356000" />
+      <workItem from="1641916561824" duration="971000" />
+      <workItem from="1642176673962" duration="340000" />
+      <workItem from="1642188381541" duration="4452000" />
+      <workItem from="1642215297551" duration="4594000" />
+      <workItem from="1642282774216" duration="1965000" />
+      <workItem from="1642363057092" duration="9300000" />
+      <workItem from="1642431572223" duration="1226000" />
+      <workItem from="1642631573185" duration="150000" />
+      <workItem from="1642715446270" duration="250000" />
+      <workItem from="1642717684471" duration="1806000" />
+      <workItem from="1642791262058" duration="6000" />
+      <workItem from="1642821740208" duration="743000" />
+      <workItem from="1643039046702" duration="545000" />
+      <workItem from="1643167707484" duration="4561000" />
+      <workItem from="1643296950287" duration="466000" />
+      <workItem from="1643316512676" duration="7300000" />
+      <workItem from="1643423796434" duration="963000" />
+      <workItem from="1644284579043" duration="1235000" />
+      <workItem from="1644452148186" duration="156000" />
+      <workItem from="1644729968317" duration="1535000" />
+      <workItem from="1644801622598" duration="41000" />
+      <workItem from="1644814461879" duration="398000" />
+      <workItem from="1644814872929" duration="581000" />
+      <workItem from="1644874334024" duration="2568000" />
+      <workItem from="1644888873725" duration="4542000" />
+      <workItem from="1644898564903" duration="1365000" />
+      <workItem from="1645039548957" duration="3462000" />
+      <workItem from="1645044773788" duration="6112000" />
+      <workItem from="1645051056047" duration="5521000" />
+      <workItem from="1645109104451" duration="338000" />
+      <workItem from="1645109713387" duration="607000" />
+      <workItem from="1645110614043" duration="221000" />
+      <workItem from="1645130189221" duration="534000" />
+      <workItem from="1645133902985" duration="53000" />
+      <workItem from="1645134089288" duration="1039000" />
+      <workItem from="1645287451983" duration="3581000" />
+      <workItem from="1645295897240" duration="4003000" />
+      <workItem from="1645303438647" duration="1702000" />
+      <workItem from="1645379667387" duration="320000" />
+      <workItem from="1645540372437" duration="5211000" />
+    </task>
+    <task id="LOCAL-00001" summary="Resubida">
+      <created>1639074934160</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639074934160</updated>
+    </task>
+    <task id="LOCAL-00002" summary="arreglo del requirements.txt">
+      <created>1639075589155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639075589155</updated>
+    </task>
+    <task id="LOCAL-00003" summary="arreglo del requirements.txt">
+      <created>1639075730426</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1639075730426</updated>
+    </task>
+    <task id="LOCAL-00004" summary="arreglos de fin de año">
+      <created>1641174968289</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641174968289</updated>
+    </task>
+    <task id="LOCAL-00005" summary="se arreglo el flujo relacionado con las convocatorias">
+      <created>1641400143875</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641400143875</updated>
+    </task>
+    <task id="LOCAL-00006" summary="actualizar css y convocatorias_detail.html">
+      <created>1642215492190</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1642215492190</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Resubida" />
+    <MESSAGE value="arreglo del requirements.txt" />
+    <MESSAGE value="arreglos de fin de año" />
+    <MESSAGE value="se arreglo el flujo relacionado con las convocatorias" />
+    <MESSAGE value="actualizar css y convocatorias_detail.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="actualizar css y convocatorias_detail.html" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+</project>

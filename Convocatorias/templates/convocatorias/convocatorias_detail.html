@@ -3,7 +3,6 @@
 
 {% block content %}
 
-
     <main id="main">
 
         <!-- ======= Breadcrumbs Section ======= -->
@@ -13,36 +12,146 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <ol>
                         <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'convocatorias:convocatoria_index' %}">Convocatoria</a></li>
-                        <li>{{ convocatoria.title }}</li>
+                        <li><a href="{% url 'convocatorias:convocatorias' %}">Convocatorias</a></li>
+                        <li>{{ objeto.titulo }}</li>
                     </ol>
                 </div>
 
             </div>
         </section><!-- Breadcrumbs Section -->
 
-        <!-- ======= Portfolio Details Section ======= -->
-        <section class="portfolio-details">
-            <div class="container">
+        <!-- ======= Blog Single Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
 
-                <h1>{{ convocatoria.title }}</h1>
-                <div class="text-right">
-                    <button class="btn btn-primary">Inscribirse</button>
+                <div class="row">
 
+                    <div class="col-lg-8 entries">
+
+                        <article class="entry entry-single">
+
+                            <div class="entry-img">
+                                <img src="{% url 'home' %}media/{{ objeto.img }}" alt=""
+                                class="img-fluid">                              
+                            </div>
+
+                            <h2 class="entry-title">
+                                {{ objeto.titulo }}
+                            </h2>
+
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                            href="blog-single.html">{{ objeto.autor.email }}</a>
+                                    </li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-calendar2-event"></i> <a
+                                            href="blog-single.html">
+                                        <time datetime="2020-01-01"> {{ objeto.fechaCreada| date }} </time>
+                                    </a></li>
+
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock-history "></i>
+                                        <a href="blog-single.html">Desde
+                                            hace {{ objeto.fechaCreada| timesince }}</a>
+                                    </li>
+
+
+                                </ul>
+                                <div class="text-right">
+                                    <button class="btn btn-primary">Inscribirse</button>
+                                </div>
+                            </div>
+
+                            <div class="entry-content">
+
+                                <p>{{ objeto.body| safe }}</p>
+
+                            </div>
+
+                            <div class="entry-footer">
+                                <i class="bi bi-folder"></i>
+                                <ul class="cats">
+                                    <li><a href="#">Business</a></li>
+                                </ul>
+
+                                <i class="bi bi-tags"></i>
+                                <ul class="tags">
+                                    <li><a href="#">Creative</a></li>
+                                    <li><a href="#">Tips</a></li>
+                                    <li><a href="#">Marketing</a></li>
+                                </ul>
+                            </div>
+
+                        </article><!-- End blog entry -->
+
+
+                    </div><!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+
+                        <div class="sidebar">
+
+                            <h3 class="sidebar-title">Buscar</h3>
+                            <div class="sidebar-item search-form">
+                                <form action="">
+                                    <input type="text">
+                                    <button type="submit"><i class="bi bi-search"></i></button>
+                                </form>
+                            </div><!-- End sidebar search formn-->
+
+                            <h3 class="sidebar-title">Categories</h3>
+                            <div class="sidebar-item categories">
+                                <ul>
+                                    <li><a href="#">General <span>(25)</span></a></li>
+                                    <li><a href="#">Lifestyle <span>(12)</span></a></li>
+                                    <li><a href="#">Travel <span>(5)</span></a></li>
+                                    <li><a href="#">Design <span>(22)</span></a></li>
+                                    <li><a href="#">Creative <span>(8)</span></a></li>
+                                    <li><a href="#">Educaion <span>(14)</span></a></li>
+                                </ul>
+                            </div><!-- End sidebar categories-->
+
+
+                            <h3 class="sidebar-title">Convocatorias Recientes</h3>
+                            <div class="sidebar-item recent-posts">
+                                {% if latest_convocatoria_list %}
+                                    {% for convocatorias in latest_convocatoria_list %}
+                                        <div class="post-item clearfix">
+                                            <img src="{% url 'home' %}media/{{ convocatorias.img }}" alt="">
+                                            <h4>
+                                                <a href="{{ convocatorias.get_absolute_url }}">{{ convocatorias.titulo }}</a>
+                                            </h4>
+                                            <time datetime="2020-01-01">{{ convocatorias.fechaCreada|date:"d M Y" }}</time>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div><!-- End sidebar recent posts-->
+
+
+                            <h3 class="sidebar-title">Tags</h3>
+                            <div class="sidebar-item tags">
+                                <ul>
+                                    <li><a href="#">App</a></li>
+                                    <li><a href="#">IT</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Mac</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Office</a></li>
+                                    <li><a href="#">Creative</a></li>
+                                    <li><a href="#">Studio</a></li>
+                                    <li><a href="#">Smart</a></li>
+                                    <li><a href="#">Tips</a></li>
+                                    <li><a href="#">Marketing</a></li>
+                                </ul>
+                            </div><!-- End sidebar tags-->
+
+                        </div><!-- End sidebar -->
+
+                    </div><!-- End blog sidebar -->
 
                 </div>
-                <p>
-                   Escrito por: {{ convocatoria.autor.email }}
-                </p>
-                <p>
-                    {{ convocatoria.fechaCreada| date }}
-                </p>
 
-                <div class="portfolio-description">
-                    <p>{{ convocatoria.body| safe }}</p>
-                </div>
             </div>
-        </section><!-- End Portfolio Details Section -->
+        </section><!-- End Blog Single Section -->
 
     </main><!-- End #main -->
 
